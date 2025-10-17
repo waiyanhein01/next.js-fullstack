@@ -8,7 +8,7 @@
 - not-found.tsx
 - loading.tsx
 
-### Routing
+## Routing
 
 - Nested Routes
 - Dynamic Routes
@@ -23,7 +23,7 @@
 
 - not-found
 
-### Layout
+## Layout
 
 - Nested Layout
 - Multiple RootLayout
@@ -34,15 +34,15 @@
   sample in product folder in app
   ```
 
-### File-colocation
+## File-colocation
 
 This is mean a folder have own page.tsx if you create other name this folder won't be run like (`product.tsx` instand of `page.tsx`).
 
-### Private Folder
+## Private Folder
 
 This is use for split code, ui logic and other component what you want. This folder is like that (\_lib or \_folder name).But we are use in `components folder` for split code.
 
-### Params and SearchParams
+## Params and SearchParams
 
 For giving a URL,
 
@@ -52,7 +52,7 @@ For giving a URL,
 
 `async/await` can not read in "use client" so if you want to do like async process you can use `use()` special function of react and `useParams()` of Next.js build in function.
 
-## Usage/Examples
+### Usage/Examples
 
 ```javascript
 
@@ -103,6 +103,6 @@ export default ProductDetailPage;
 
 #### Noted : While `page.tsx` has access to both params and searchParams, `layout.tsx` only has access to params
 
-### Navigating Progammatically
+## Navigating Progammatically
 
 `useRouter()`
