@@ -13,13 +13,21 @@
 - Nested Routes
 - Dynamic Routes
 - Nested Dynamic Routes
-- Catch all Segments
+- Catch all Segments or Catch all Routes
+
+  If u want do dynamically routes `ex. docs/react/hooks` this url will be come dynamically so if u want to control that use catch-all route segment you can see `docs` folder in app
+
+  Catch all Segments sign like that `[...slug]` in that way if u enter `/docs`` in url that will show 404 not found because this docs file is not have own `page.tsx`. So we are using optional catch all segment
+
+  Optional Catch all Segments sign like that `[[...slug]]`
+
 - not-found
 
 ### Layout
 
 - Nested Layout
 - Multiple RootLayout
+
   If u want to do share ui like header ui want to be use both product and product detail you do `layout.tsx` under product folder
 
   ```bash
@@ -63,9 +71,9 @@ export default ProductDetailPage;
 
 ```javascript
 
-// use "use()"
 import { use } from "react";
 
+// use "use()"
 const ProductDetailPage = ({
   params,
 }: {
