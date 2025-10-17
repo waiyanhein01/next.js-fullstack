@@ -15,9 +15,9 @@
 - Nested Dynamic Routes
 - Catch all Segments or Catch all Routes
 
-  If u want do dynamically routes `ex. docs/react/hooks` this url will be come dynamically so if u want to control that use catch-all route segment you can see `docs` folder in app
+  If u want to do dynamically routes `ex. docs/react/hooks` this url will be come dynamically so if u want to control that use catch-all route segment you can see `docs` folder in app.
 
-  Catch all Segments sign like that `[...slug]` in that way if u enter `/docs`` in url that will show 404 not found because this docs file is not have own `page.tsx`. So we are using optional catch all segment
+  Catch all Segments sign like that `[...slug]` in that way if u enter `/docs` in url that will show 404 not found because this docs file is not have own `page.tsx`. So we are using optional catch all segment.
 
   Optional Catch all Segments sign like that `[[...slug]]`
 
@@ -28,7 +28,7 @@
 - Nested Layout
 - Multiple RootLayout
 
-  If u want to do share ui like header ui want to be use both product and product detail you do `layout.tsx` under product folder
+  If u want to do share ui like header ui want to be use both product and product detail you do `layout.tsx` under product folder.
 
   ```bash
   sample in product folder in app
@@ -50,7 +50,7 @@ For giving a URL,
 
 `searchParams` is a promise that resolves to an object containg the query parameters(like filters and sorting)
 
-`async/await` can not read in "use client" so if you want to do like async process you can use `use()` special function of react and `useParams()` of Next.js build in function
+`async/await` can not read in "use client" so if you want to do like async process you can use `use()` special function of react and `useParams()` of Next.js build in function.
 
 ## Usage/Examples
 
