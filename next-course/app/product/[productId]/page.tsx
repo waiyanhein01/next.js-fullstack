@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { use } from "react";
 
-// normal way
+// server component
 // const ProductDetailPage = async ({
 //   params,
 // }: {
@@ -13,7 +13,7 @@ import { use } from "react";
 //   return <div>ProductDetailPage - {productId}</div>;
 // };
 
-// use "use()"
+// client component with "use()"
 // const ProductDetailPage = ({
 //   params,
 // }: {
@@ -23,7 +23,7 @@ import { use } from "react";
 //   return <div>ProductDetailPage - {productId}</div>;
 // };
 
-// use "useParams()"
+// client component with "useParams()"
 const ProductDetailPage = () => {
   const { productId } = useParams<{ productId: string }>();
   return <div>ProductDetailPage - {productId}</div>;

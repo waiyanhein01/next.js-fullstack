@@ -71,6 +71,8 @@ export default ProductDetailPage;
 
 ```javascript
 
+"use client";
+
 import { use } from "react";
 
 // use "use()"
@@ -101,17 +103,16 @@ const ProductDetailPage = () => {
 export default ProductDetailPage;
 ```
 
-#### Noted : While `page.tsx` has access to both params and searchParams, `layout.tsx` only has access to params
-
 ### SearchParams
 
 `searchParams` is a promise that resolves to an object containing the query parameters(like filters and sorting)
 
 ### searchParams Usage/Examples
 
-We can use searchParams in server side below the code
+You can see searchParams how to use in server side and client side below the code.These code look like similar but rendering is not same.
 
 ```javascript
+// server component
 const ProductPage = async ({
   searchParams,
 }: {
@@ -131,6 +132,57 @@ const ProductPage = async ({
 export default ProductPage;
 ```
 
-## Navigating Progammatically
+```javascript
+// client component with use()
+
+"use client";
+
+import { use } from "react";
+
+const ProductPage = ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { page = "1", category = "", query = "" } = use(searchParams);
+  return (
+    <div className="">
+      <h1 className="">ProductPage</h1>
+      <p>page: {page}</p>
+      <p>category: {category}</p>
+      <p>query: {query}</p>
+    </div>
+  );
+};
+
+export default ProductPage;
+```
+
+```javascript
+"use client";
+
+import { useSearchParams } from "next/navigation";
+
+const ProductPage = () => {
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page") || "1";
+  const category = searchParams.get("category") || "";
+  const query = searchParams.get("query") || "";
+  return (
+    <div className="">
+      <h1 className="">ProductPage</h1>
+      <p>page: {page}</p>
+      <p>category: {category}</p>
+      <p>query: {query}</p>
+    </div>
+  );
+};
+
+export default ProductPage;
+```
+
+#### Noted : While `page.tsx` has access to both params and searchParams, `layout.tsx` only has access to params
+
+## Navigating Programmatically
 
 `useRouter()`
