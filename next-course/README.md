@@ -44,15 +44,15 @@ This is use for split code, ui logic and other component what you want. This fol
 
 ## Params and SearchParams
 
+### Params
+
 For giving a URL,
 
 `params` is a promise that resolves to an object containg the dynamic routes parameters(like id)
 
-`searchParams` is a promise that resolves to an object containg the query parameters(like filters and sorting)
-
 `async/await` can not read in "use client" so if you want to do like async process you can use `use()` special function of react and `useParams()` of Next.js build in function.
 
-### Usage/Examples
+### Params Usage/Examples
 
 ```javascript
 
@@ -102,6 +102,34 @@ export default ProductDetailPage;
 ```
 
 #### Noted : While `page.tsx` has access to both params and searchParams, `layout.tsx` only has access to params
+
+### SearchParams
+
+`searchParams` is a promise that resolves to an object containing the query parameters(like filters and sorting)
+
+### searchParams Usage/Examples
+
+We can use searchParams in server side below the code
+
+```javascript
+const ProductPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { page = "1", category = "", query = "" } = await searchParams;
+  return (
+    <div className="">
+      <h1 className="">ProductPage</h1>
+      <p>page: {page}</p>
+      <p>category: {category}</p>
+      <p>query: {query}</p>
+    </div>
+  );
+};
+
+export default ProductPage;
+```
 
 ## Navigating Progammatically
 
