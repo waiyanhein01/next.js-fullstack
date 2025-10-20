@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { use } from "react";
 
 // server component
@@ -26,6 +26,9 @@ import { use } from "react";
 // client component with "useParams()"
 const ProductDetailPage = () => {
   const { productId } = useParams<{ productId: string }>();
+  if (parseInt(productId) > 100) {
+    notFound();
+  }
   return <div>ProductDetailPage - {productId}</div>;
 };
 

@@ -23,6 +23,8 @@
 
 - not-found
 
+In this `not-found.tsx` has no access props, if you want to use some url pathname you can use `usePathname()`.
+
 ## Layout
 
 - Nested Layout
@@ -134,7 +136,6 @@ export default ProductPage;
 
 ```javascript
 // client component with use()
-
 "use client";
 
 import { use } from "react";
@@ -159,6 +160,7 @@ export default ProductPage;
 ```
 
 ```javascript
+// client component with useSearchParams()
 "use client";
 
 import { useSearchParams } from "next/navigation";
