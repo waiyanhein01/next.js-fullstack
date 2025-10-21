@@ -190,7 +190,7 @@ export default ProductPage;
 
 #### Noted : While `page.tsx` has access to both params and searchParams, `layout.tsx` only has access to params
 
-### Route Groups
+## Route Groups
 
 This is for group of routes (eg. (auth) and (root)) if you don't want header and footer in auth routes you can create a routes with groups.Every single group must have `layout.tsx` and `page.tsx` if you want to customize layout of ui.
 
