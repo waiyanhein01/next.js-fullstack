@@ -1,4 +1,4 @@
-import Count from "@/app/_lib/Count";
+import Count from "@/app/(root)/_lib/Count";
 
 const CartPage = () => {
   return (
