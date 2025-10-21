@@ -186,7 +186,7 @@ export default ProductPage;
 
 ## Route Groups
 
-This is for group of routes (eg. (auth) and (root)) if you don't want header and footer in auth routes you can create a routes with groups.Every single group must have `layout.tsx` and `page.tsx` if you want to customize layout of ui.
+This is for group of routes (eg. (auth) and (root)) if you don't want header and footer in auth routes you can create a routes with groups.Root routes group must have `layout.tsx` and `page.tsx` if you want to customize layout of ui.
 
 ### Multiple RootLayout
 
