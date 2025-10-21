@@ -28,13 +28,18 @@ In this `not-found.tsx` has no access props, if you want to use some url pathnam
 ## Layout
 
 - Nested Layout
+
+If u want to do share ui like header ui want to be use both product and product detail you do `layout.tsx` under product folder.
+
+```bash
+sample in product folder in app
+```
+
 - Multiple RootLayout
 
-  If u want to do share ui like header ui want to be use both product and product detail you do `layout.tsx` under product folder.
+This layout render with `route group` and if you use routes group, every single group has `RootLayout(layout.tsx)` but `page.tsx` must has one. Multiple layout must has html structure.
 
-  ```bash
-  sample in product folder in app
-  ```
+#### Noted - If you use multiple layout page will be refresh.
 
 ## File-colocation
 
