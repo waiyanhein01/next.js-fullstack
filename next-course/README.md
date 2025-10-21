@@ -35,12 +35,6 @@ If u want to do share ui like header ui want to be use both product and product 
 sample in product folder in app
 ```
 
-- Multiple RootLayout
-
-This layout render with `route group` and if you use routes group, every single group has `RootLayout(layout.tsx)` but `page.tsx` must has one. Multiple layout must has html structure.
-
-#### Noted - If you use multiple layout page will be refresh.
-
 ## File-colocation
 
 This is mean a folder have own page.tsx if you create other name this folder won't be run like (`product.tsx` instand of `page.tsx`).
@@ -193,6 +187,12 @@ export default ProductPage;
 ## Route Groups
 
 This is for group of routes (eg. (auth) and (root)) if you don't want header and footer in auth routes you can create a routes with groups.Every single group must have `layout.tsx` and `page.tsx` if you want to customize layout of ui.
+
+### Multiple RootLayout
+
+This layout render with `route group` and if you use routes group, every single group has `RootLayout(layout.tsx)` but `page.tsx` must has one. Multiple layout must has html structure.
+
+#### Noted - If you use multiple layout page will be refresh.
 
 Sample Usage `(auth)` and `(root)`
 
