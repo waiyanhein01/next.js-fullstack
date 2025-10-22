@@ -198,7 +198,7 @@ Sample Usage `(auth)` and `(root)`
 
 ## Part of "use client" in server component
 
-This client component will be render in server components.
+This Carousel component will be render in server components.
 
 ```
 "use client";
