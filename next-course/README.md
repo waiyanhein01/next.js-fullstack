@@ -1,4 +1,4 @@
-# Learning Next.js
+# Learning Next.js started 9 Oct 2025
 
 ## Special files
 
