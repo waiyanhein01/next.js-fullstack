@@ -196,6 +196,18 @@ This layout render with `route group` and if you use routes group, every single 
 
 Sample Usage `(auth)` and `(root)`
 
+## Part of "use client" in server component
+
+This client component will be render in server components.
+
+```
+"use client";
+
+import { Carousel } from "acme-carousel";
+
+export default Carousel;
+```
+
 ## Navigating Programmatically
 
 `useRouter()`
