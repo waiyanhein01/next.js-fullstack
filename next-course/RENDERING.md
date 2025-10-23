@@ -175,3 +175,71 @@ These are the _internal mechanics_ React uses to manage the UI and make it fast.
 ၂။ Server က Static HTML ကို ပို့ပေးပါတယ်။
 ၃။ Browser က Static Page ကို Interactive ဖြစ်လာအောင် **Hydration** လုပ်ငန်းစဉ်ကို Run ပါတယ်။
 ၄။ အဲ့ဒီနောက်ပိုင်း State တစ်ခုခု ပြောင်းလဲသွားတိုင်း၊ **Reconciliation** က UI ကို ထိထိရောက်ရောက် Update လုပ်ပေးဖို့ တာဝန်ယူပါတယ်။
+
+---
+
+## ISR (Incremental Static Regeneration)
+
+ISR is a hybrid strategy that combines the speed of **SSG** with the freshness of **SSR**. It allows you to update static pages _after_ they've been built, without a full redeploy.
+
+This is achieved through two "revalidation" methods:
+
+### a) Time-based Revalidation
+
+This method automatically re-generates a page in the background after a set time interval.
+
+- **How it works:** You add a `revalidate: 60` (in seconds) prop in `getStaticProps`.
+- **The Flow:**
+  1.  A user requests a page. They are **instantly** served the old, "stale" static page.
+  2.  If the 60-second timer has passed, Next.js **re-builds the page in the background**.
+  3.  The _next_ user who visits gets the new, fresh page.
+- **Analogy:** You are given the pre-packaged meal instantly. Because it's old, the chef starts cooking a fresh batch in the background for the _next_ customer.
+- **Best for:** Blogs, news sites, or content that is updated regularly but doesn't need to be second-by-second fresh.
+
+### b) On-Demand Revalidation
+
+This method allows you to _manually_ force a page to re-generate immediately, usually in response to an event.
+
+- **How it works:** You call an API route (e.g., from your CMS webhook) that uses the `res.revalidate('/your-path')` function.
+- **The Flow:**
+  1.  You update a post in your CMS.
+  2.  The CMS calls your API route.
+  3.  Next.js immediately purges the cache and builds a new, fresh page.
+  4.  The _very next user_ gets the brand-new page.
+- **Analogy:** You (the CMS) call the restaurant and say "remake this specific meal right now." The chef immediately cooks a fresh dish and replaces the old one.
+- **Best for:** Headless CMS integration, e-commerce product updates, or any time you need content to be fresh _immediately_ after a change.
+
+---
+
+## ၂. ISR (Incremental Static Regeneration)
+
+ISR သည် **SSG** ၏ အမြန်နှုန်းနှင့် **SSR** ၏ Data အသစ်ဖြစ်မှု (freshness) ကို ပေါင်းစပ်ထားသော hybrid နည်းလမ်းတစ်ခု ဖြစ်သည်။ ၎င်းသည် သင့်အား static page များကို တည်ဆောက်ပြီး _နောက်ပိုင်း_ တွင် Website တစ်ခုလုံးကို deploy ပြန်လုပ်စရာမလိုဘဲ update လုပ်ခွင့်ပေးသည်။
+
+၎င်းကို "revalidation" နည်းလမ်း (၂) မျိုးဖြင့် အကောင်အထည်ဖော်သည်:
+
+### က) Time-based Revalidation (အချိန်-အခြေပြု)
+
+ဤနည်းလမ်းသည် သတ်မှတ်ထားသော အချိန်ကာလတစ်ခုပြီးနောက် Page ကို နောက်ကွယ် (background) တွင် အလိုအလျောက် အသစ်ပြန်လည် တည်ဆောက်ပေးသည်။
+
+- **ဘယ်လိုအလုပ်လုပ်လဲ:** သင်က `getStaticProps` ထဲတွင် `revalidate: 60` (စက္ကန့်ဖြင့်) prop ကို ထည့်ပေးရသည်။
+- **လုပ်ဆောင်ပုံအဆင့်ဆင့်:**
+  ၁။ User တစ်ဦးက Page ကို တောင်းဆိုသည်။ သူတို့သည် **ချက်ချင်း** ပင် Page **အဟောင်း (stale)** ကို ရရှိသည်။
+  ၂။ အကယ်၍ စက္ကန့် ၆၀ ပြည့်သွားပါက၊ Next.js က **Page ကို နောက်ကွယ်တွင် ပြန်လည်တည်ဆောက်**သည်။
+  ၃။ _နောက်ထပ်_ ဝင်ကြည့်သော User က Page အသစ်စက်စက်ကို ရရှိသည်။
+- **ဥပမာခိုင်းနှိုင်းချက်:** သင့်ကို ကြိုတင်ထုပ်ပိုးထားသော အစားအစာကို ချက်ချင်း ပေးလိုက်သည်။ ၎င်းက အဟောင်းဖြစ်နေသောကြောင့်၊ စားဖိုမှူးက _နောက်လာမည့် Customer_ အတွက် အသစ်တစ်ပွဲကို နောက်ကွယ်တွင် စတင်ချက်ပြုတ်နေသည်။
+- **ဘယ်မှာသုံးသင့်လဲ:** Blog များ၊ သတင်း site များ၊ သို့မဟုတ် ပုံမှန် update လုပ်သော်လည်း တစ်စက္ကန့်ချင်း အသစ်ဖြစ်ရန် မလိုအပ်သော content များ။
+
+### ခ) On-Demand Revalidation (တောင်းဆိုမှု-အခြေပြု)
+
+ဤနည်းလမ်းသည် သင့်အား Page တစ်ခုကို အဖြစ်အပျက် (event) တစ်ခု ဖြစ်ပေါ်လာသည်နှင့် _ကိုယ်တိုင်_ ချက်ချင်း အသစ်ပြန်ဆောက်ရန် တွန်းအားပေးခွင့်ပြုသည်။
+
+- **ဘယ်လိုအလုပ်လုပ်လဲ:** သင်က `res.revalidate('/your-path')` function ကို အသုံးပြုသော API route တစ်ခု (ဥပမာ- သင်၏ CMS webhook မှ) ကို ခေါ်ဆိုရသည်။
+- **လုပ်ဆောင်ပုံအဆင့်ဆင့်:**
+  ၁။ သင်က သင်၏ CMS တွင် post တစ်ခုကို update လုပ်သည်။
+  ၂။ CMS က သင်၏ API route ကို ခေါ်ဆိုသည်။
+  ၃။ Next.js က cache ကို ချက်ချင်း ဖျက်သိမ်းပြီး Page အသစ်စက်စက်ကို တည်ဆောက်သည်။
+  ၄။ _နောက်ထပ် ဝင်ကြည့်သော User_ က Page အသစ်စက်စက်ကို ရရှိသည်။
+- **ဥပမာခိုင်းနှိုင်းချက်:** သင် (CMS) က စားသောက်ဆိုင်ကို ဖုန်းဆက်ပြီး "ဒီဟင်းပွဲကို အခုချက်ချင်း ပြန်လုပ်ပေး" ဟု ပြောလိုက်သည်။ စားဖိုမှူးက ချက်ချင်း ဟင်းပွဲအသစ်ကို ချက်ပြုတ်ပြီး အဟောင်းကို အစားထိုးလိုက်သည်။
+- **ဘယ်မှာသုံးသင့်လဲ:** Headless CMS နှင့် ချိတ်ဆက်ခြင်း၊ e-commerce ကုန်ပစ္စည်း update များ၊ သို့မဟုတ် အပြောင်းအလဲတစ်ခုပြီးနောက် content ကို _ချက်ချင်း_ အသစ်ဖြစ်စေလိုသည့် အခါတိုင်း။
+
+---
