@@ -27,7 +27,8 @@ import { use } from "react";
 const ProductDetailPage = () => {
   const { productId } = useParams<{ productId: string }>();
   if (parseInt(productId) > 100) {
-    notFound();
+    // notFound();
+    throw new Error("Product not found!");
   }
   return <div>ProductDetailPage - {productId}</div>;
 };
