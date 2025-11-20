@@ -1,6 +1,6 @@
 "use client";
 
-const error = ({ error }: { error: Error & { digest?: string } }) => {
+const Error = ({ error }: { error: Error & { digest?: string } }) => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <h1>Something went wrong!</h1>
@@ -9,4 +9,4 @@ const error = ({ error }: { error: Error & { digest?: string } }) => {
   );
 };
 
-export default error;
+export default Error;
