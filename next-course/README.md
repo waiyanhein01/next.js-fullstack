@@ -235,7 +235,7 @@ This is normally build in Tag like `LINK`. Next.js will be give you `Login` butt
 
   #### Static Side or ISR Rendering in Server Side(SSR)
 
-````
+```
 next: {
       revalidate: 60,
       }
@@ -246,4 +246,3 @@ next: {
 ## Navigating Programmatically
 
 `useRouter()`
-````
