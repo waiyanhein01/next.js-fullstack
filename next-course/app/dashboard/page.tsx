@@ -4,7 +4,7 @@ import Link from "next/link";
 import UserProfile from "@/components/dashboard/UserProfile";
 import Statistics from "@/components/dashboard/Statistics";
 import RecentActivity from "@/components/dashboard/RecentActivity";
-import { refreshPostsCache } from "../actions/post";
+// import { refreshPostsCache } from "../actions/post";
 
 const DashboardPage = () => {
   return (
@@ -14,7 +14,8 @@ const DashboardPage = () => {
         Go Home
       </Link>
       {/* Creating a new post and revalidate */}
-      <form action={refreshPostsCache}>
+      {/* action={refreshPostsCache} */}
+      <form>
         <p>Create a new post and revalidate</p>
         <button
           type="submit"
@@ -26,7 +27,6 @@ const DashboardPage = () => {
       <p className="mb-8 text-gray-600">
         This page loads immediately while components stream in
       </p>
-
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* Component with Suspense - will stream in */}
         <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">

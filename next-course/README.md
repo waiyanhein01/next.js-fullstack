@@ -208,6 +208,41 @@ import { Carousel } from "acme-carousel";
 export default Carousel;
 ```
 
+## Streaming and Prefetching
+
+- Page level streaming
+- Component level streaming
+- Prefetching
+
+### Prefetching
+
+This is normally build in Tag like `LINK`. Next.js will be give you `Login` button for ``login.rsc` "RSC" means "React Server Component".
+
+#### Noted : You can see that code in `dashboard` folder.
+
+## Data Fetching
+
+- In Server Component
+- In Client Component
+
+### Data Fetching in server component
+
+- Fetch API (Using Next as Frontend)
+
+  #### Dynamic Rendering in Server Side(SSR)
+
+  This method next.js will cache automatically so if your web site or app run every time you can use dynamically with this Parameter `cache: "no-cache",`
+
+  #### Static Side or ISR Rendering in Server Side(SSR)
+
+````
+next: {
+      revalidate: 60,
+      }
+```
+- Prisma ORM (Using Next as FullStack)
+
 ## Navigating Programmatically
 
 `useRouter()`
+````
