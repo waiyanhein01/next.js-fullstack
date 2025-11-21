@@ -240,6 +240,7 @@ next: {
       revalidate: 60,
       }
 ```
+
 - Prisma ORM (Using Next as FullStack)
 
 ## Navigating Programmatically
