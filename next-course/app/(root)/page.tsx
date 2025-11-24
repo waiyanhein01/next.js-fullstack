@@ -33,6 +33,9 @@ export default function Home() {
         >
           Dashboard
         </Link>
+        <Link href="/blog" className="rounded bg-blue-500 px-4 py-2 text-white">
+          Blog
+        </Link>
       </div>
 
       <Carousel

@@ -8,7 +8,7 @@
 - not-found.tsx
 - loading.tsx
 
-## Routing
+## 1. Routing
 
 - Nested Routes
 - Dynamic Routes
@@ -25,7 +25,7 @@
 
 In this `not-found.tsx` has no access props, if you want to use some url pathname you can use `usePathname()`.
 
-## Layout
+## 2. Layout
 
 - Nested Layout
 
@@ -35,15 +35,15 @@ If u want to do share ui like header ui want to be use both product and product 
 sample in product folder in app
 ```
 
-## File-colocation
+## 3. File-colocation
 
 This is mean a folder have own page.tsx if you create other name this folder won't be run like (`product.tsx` instand of `page.tsx`).
 
-## Private Folder
+## 4. Private Folder
 
 This is use for split code, ui logic and other component what you want. This folder is like that (\_lib or \_folder name).But we are use in `components folder` for split code.
 
-## Params and SearchParams
+## 5. Params and SearchParams
 
 ### Params
 
@@ -184,7 +184,7 @@ export default ProductPage;
 
 #### Noted : While `page.tsx` has access to both params and searchParams, `layout.tsx` only has access to params
 
-## Route Groups
+## 6. Route Groups
 
 This is for group of routes (eg. (auth) and (root)) if you don't want header and footer in auth routes you can create a routes with groups.Root routes group must have `layout.tsx` and `page.tsx` if you want to customize layout of ui.
 
@@ -196,7 +196,7 @@ This layout render with `route group` and if you use routes group, every single 
 
 Sample Usage `(auth)` and `(root)`
 
-## Part of "use client" in server component
+## 7. Part of "use client" in server component
 
 This Carousel component will be render in server components.
 
@@ -208,7 +208,7 @@ import { Carousel } from "acme-carousel";
 export default Carousel;
 ```
 
-## Streaming and Prefetching
+## 8. Streaming and Prefetching
 
 - Page level streaming
 - Component level streaming
@@ -220,7 +220,7 @@ This is normally build in Tag like `LINK`. Next.js will be give you `Login` butt
 
 #### Noted : You can see that code in `dashboard` folder.
 
-## Data Fetching
+## 9. Data Fetching
 
 - In Server Component
 - In Client Component
@@ -234,16 +234,28 @@ This is normally build in Tag like `LINK`. Next.js will be give you `Login` butt
   This method next.js will cache automatically so if your web site or app run every time you can use dynamically with this Parameter `cache: "no-cache",`
 
   #### Static Side or ISR Rendering in Server Side(SSR)
+  - Time base revalidation
+  - On-demand revalidation
+    - revalidateTag approach with tag["posts"]
+    - revalidatePath(no need)
 
 ```
 next: {
-      revalidate: 60, // Time-base revalidation
-      tag: ["posts" or "something you want to cache a name"] // On-demand revalidation
+      // Time-base revalidation
+      revalidate: 60,
+
+      // On-demand revalidation
+      tag: ["posts" or "something you want to cache a name"]
       }
 ```
 
+      - If you use that approach you must be match use with this ```revalidateTag```.
+      - ```revalidatePath``` can use like this approach.
+
+##### Noted : if u want to know about above rendering detail u can see in `RENDERING.md` and `blog.page & action`.
+
 - Prisma ORM (Using Next as FullStack)
 
-## Navigating Programmatically
+## 10. Navigating Programmatically
 
 `useRouter()`
