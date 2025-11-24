@@ -237,7 +237,8 @@ This is normally build in Tag like `LINK`. Next.js will be give you `Login` butt
 
 ```
 next: {
-      revalidate: 60,
+      revalidate: 60, // Time-base revalidation
+      tag: ["posts" or "something you want to cache a name"] // On-demand revalidation
       }
 ```
 

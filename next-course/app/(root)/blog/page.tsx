@@ -6,9 +6,10 @@ interface Post {
 
 const BlogPage = async () => {
   const response = await fetch("http://localhost:4000/posts", {
-    // next: {
-    //   revalidate: 60,
-    // }, // this parameter for SSR with ISR (Incremental Static Regeneration) Or Static Rendering
+    next: {
+      revalidate: 60, // Time-based Revalidation
+      tags: ["posts"], // On-demand Revalidation
+    }, // this parameter for SSR with ISR (Incremental Static Regeneration) Or Static Rendering
     cache: "no-cache", // this parameter for SSR (Server Side Rendering) with dynamic Rendering
   });
   if (!response.ok) {

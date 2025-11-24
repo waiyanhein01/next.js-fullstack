@@ -4,7 +4,7 @@ import Link from "next/link";
 import UserProfile from "@/components/dashboard/UserProfile";
 import Statistics from "@/components/dashboard/Statistics";
 import RecentActivity from "@/components/dashboard/RecentActivity";
-// import { refreshPostsCache } from "../actions/post";
+import { refreshPostsCache } from "../action/post";
 
 const DashboardPage = () => {
   return (
@@ -14,8 +14,8 @@ const DashboardPage = () => {
         Go Home
       </Link>
       {/* Creating a new post and revalidate */}
-      {/* action={refreshPostsCache} */}
-      <form>
+
+      <form action={refreshPostsCache}>
         <p>Create a new post and revalidate</p>
         <button
           type="submit"
