@@ -1,16 +1,24 @@
 // Nested Route
 
 import prisma from "@/lib/prisma";
+import AuthorCount from "../../_lib/AuthorCount";
+import { Suspense } from "react";
 
-const AuthorPage = async () => {
+export const dynamic = "force-dynamic";
+
+const fetchUsers = async () => {
   const users = await prisma.user.findMany();
+  return users;
+};
+
+const AuthorPage = () => {
+  const users = fetchUsers();
   return (
     <div>
-      {users.map((user) => (
-        <p key={user.id}>
-          {user.name} - {user.email}
-        </p>
-      ))}
+      <h1>AuthorPage</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <AuthorCount users={users} />
+      </Suspense>
     </div>
   );
 };
