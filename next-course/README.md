@@ -252,8 +252,8 @@ next: {
       }
 ```
 
-      - If you use that approach you must be match use with this ```revalidateTag```.
-      - ```revalidatePath``` can use like this approach.
+- If you use that approach you must be match use with this `revalidateTag`.
+- `revalidatePath` can use like this approach.
 
 ##### Noted : if u want to know about above rendering detail u can see in `RENDERING.md` and `blog.page & action`.
 
