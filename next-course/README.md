@@ -258,7 +258,8 @@ next: {
 ##### Noted : if u want to know about above rendering detail u can see in `RENDERING.md` and `blog.page & action`.
 
 - Prisma ORM (Using Next as FullStack)
-  Direct fetch from data base with `action`
+
+Direct fetch from data base with `action`
 
 ### Data Fetching in client component
 
