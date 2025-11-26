@@ -228,6 +228,9 @@ This is normally build in Tag like `LINK`. Next.js will be give you `Login` butt
 ### Data Fetching in server component
 
 - Fetch API (Using Next as Frontend)
+- Prisma ORM (Using Next as FullStack)
+
+- Fetch API (Using Next as Frontend)
 
   #### Dynamic Rendering in Server Side(SSR)
 
@@ -255,6 +258,19 @@ next: {
 ##### Noted : if u want to know about above rendering detail u can see in `RENDERING.md` and `blog.page & action`.
 
 - Prisma ORM (Using Next as FullStack)
+  Direct fetch from data base with `action`
+
+### Data Fetching in client component
+
+- React `use` hook
+  If you want to render your server component in client component use `use` that help you render with the best performance in client side. Prepare data server doing in next.js side and after that give to react hook like `use` and then you must use `Suspense`.
+
+  ```
+  export const dynamic = "force-dynamic"
+
+  ```
+
+- Tanstack query or RTK query or SWR
 
 ## 10. Navigating Programmatically
 
