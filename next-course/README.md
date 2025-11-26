@@ -263,12 +263,13 @@ next: {
 ### Data Fetching in client component
 
 - React `use` hook
-  If you want to render your server component in client component use `use` that help you render with the best performance in client side. Prepare data server doing in next.js side and after that give to react hook like `use` and then you must use `Suspense`.
 
-  ```
-  export const dynamic = "force-dynamic"
+If you want to render your server component in client component use `use` that help you render with the best performance in client side. Prepare data server doing in next.js side and after that give to react hook like `use` and then you must use `Suspense`.
 
-  ```
+```
+export const dynamic = "force-dynamic"
+
+```
 
 - Tanstack query or RTK query or SWR
 
