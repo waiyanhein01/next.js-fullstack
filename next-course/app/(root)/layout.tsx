@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NavLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,9 @@ export default function NavLayout({
 }>) {
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-between bg-neutral-200 text-neutral-950">
-      <h1 className="w-full bg-neutral-950 p-3 text-neutral-50">Header</h1>
+      <Link href="/" className="w-full bg-neutral-950 p-3 text-neutral-50">
+        Header
+      </Link>
       {children}
       <h1 className="w-full bg-neutral-950 p-3 text-neutral-50">Footer</h1>
     </div>
