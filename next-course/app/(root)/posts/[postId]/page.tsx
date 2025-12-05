@@ -1,4 +1,5 @@
 import PostDetails from "@/components/posts/PostDetails";
+import PostDetailsWithSWR from "@/components/posts/PostDetailsWithSWR";
 
 const PostDetailPage = async ({
   params,
@@ -9,7 +10,7 @@ const PostDetailPage = async ({
   return (
     <>
       <h1>PostDetailPage</h1>
-      <PostDetails postId={postId} />
+      <PostDetailsWithSWR postId={postId} />
     </>
   );
 };

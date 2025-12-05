@@ -280,7 +280,7 @@ export const dynamic = "force-dynamic"
 `NEXT_PUBLIC_NAME ` next.js will allow to accept env variable like this if you are fetching in client component.
 
 ```
-// using fetch API
+// use fetch API
 useEffect(() => {
     const fetchPostDetails = async () => {
       try {
@@ -309,7 +309,7 @@ useEffect(() => {
 ```
 
 ```
-// using axios
+// use axios
 useEffect(() => {
     const fetchPostDetails = async () => {
       try {
