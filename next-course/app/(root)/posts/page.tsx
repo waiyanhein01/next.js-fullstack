@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const PostsPage = async () => {
   const res = await fetch(`${process.env.BASE_API_URL}/posts`);
   console.log(res);
@@ -8,7 +10,9 @@ const PostsPage = async () => {
   return (
     <div>
       {posts.map((post) => (
-        <div key={post.id}>{post.title}</div>
+        <div className="" key={post.id}>
+          <Link href={`/posts/${post.id}`}>{post.title}</Link>
+        </div>
       ))}
     </div>
   );

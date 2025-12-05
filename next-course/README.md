@@ -275,6 +275,65 @@ export const dynamic = "force-dynamic"
 
 ```
 
+##### Tanstack query or RTK query or SWR
+
+`NEXT_PUBLIC_NAME ` next.js will allow to accept env variable like this if you are fetching in client component.
+
+```
+// using fetch API
+useEffect(() => {
+    const fetchPostDetails = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_API_URL}/posts/${postId}`,
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch post details 😂");
+        }
+
+        const postDetail = await res.json();
+        setPost(postDetail);
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPostDetails();
+  }, []);
+
+```
+
+```
+// using axios
+useEffect(() => {
+    const fetchPostDetails = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+
+        const res = await api.get(`/posts/${postId}`);
+        const postDetail = res.data;
+
+        if (res.status !== 200) {
+          throw new Error("Failed to fetch post details 😂");
+        }
+
+        setPost(postDetail);
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPostDetails();
+  }, []);
+```
+
 ## 10. Navigating Programmatically
 
 `useRouter()`
