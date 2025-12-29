@@ -40,22 +40,12 @@
     {
       "id": "2",
       "name": "Aung Aung",
-      "email": "aung@gmail.com"
+      "email": "admin@gmail.com"
     },
     {
       "id": "3",
       "name": "Hla Hla",
       "email": "hla@gmail.com"
-    },
-    {
-      "id": "4",
-      "name": "Zaw Zaw",
-      "email": "zaw@gmail.com"
-    },
-    {
-      "id": "5",
-      "name": "Mya Mya",
-      "email": "mya@gmail.com"
     }
   ]
 }

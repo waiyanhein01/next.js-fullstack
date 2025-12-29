@@ -341,6 +341,8 @@ useEffect(() => {
 3. Preload
 
 Sequential data fetching can view in `Post Detail` app folder.
+Parallel data fetching can view in `User Detail` app folder.
+Preload data fetching can view in `User Detail` app folder too.
 
 ## 10. Navigating Programmatically
 
