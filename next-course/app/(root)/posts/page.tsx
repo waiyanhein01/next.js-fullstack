@@ -10,7 +10,7 @@ const PostsPage = async () => {
   return (
     <div>
       {posts.map((post) => (
-        <div className="" key={post.id}>
+        <div key={post.id}>
           <Link href={`/posts/${post.id}`}>{post.title}</Link>
         </div>
       ))}

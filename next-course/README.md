@@ -334,6 +334,14 @@ useEffect(() => {
   }, []);
 ```
 
+#### Data Fetching Pattern
+
+1. Sequential
+2. Parallel
+3. Preload
+
+Sequential data fetching can view in `Post Detail` app folder.
+
 ## 10. Navigating Programmatically
 
 `useRouter()`

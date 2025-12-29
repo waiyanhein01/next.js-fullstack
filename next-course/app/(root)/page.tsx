@@ -40,13 +40,13 @@ export default function Home() {
           Post
         </Link>
       </div>
-
+      {/* 
       <Carousel
         items={items}
         autoplay={{ enabled: true, interval: 3000 }}
         infinite
         pauseOnHover
-      />
+      /> */}
     </div>
   );
 }
