@@ -9,7 +9,7 @@ interface Post {
   title: string;
 }
 
-const PostComponent = async () => {
+const PostComponentWithFetch = async () => {
   "use cache";
   cacheLife("hours");
 
@@ -28,4 +28,4 @@ const PostComponent = async () => {
   );
 };
 
-export default PostComponent;
+export default PostComponentWithFetch;
