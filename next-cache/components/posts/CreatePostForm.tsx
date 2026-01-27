@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -9,15 +11,20 @@ import {
   FieldSet,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-
 import { Textarea } from "@/components/ui/textarea";
-import { createPostAction } from "@/lib/actions/posts";
+import { createPostAction, State } from "@/lib/actions/posts";
 import Link from "next/link";
+import { useActionState } from "react";
 
-const CreatePostForm = async () => {
+const CreatePostForm = () => {
+  const initialState: State = { message: null };
+  const [state, actionState, pending] = useActionState(
+    createPostAction,
+    initialState,
+  );
   return (
     <div className="w-full max-w-md">
-      <form action={createPostAction}>
+      <form action={actionState}>
         <FieldGroup>
           <FieldSet>
             <FieldLegend>Create Post Form</FieldLegend>
