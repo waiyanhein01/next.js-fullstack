@@ -2,7 +2,6 @@ import prisma from "@/lib/prisma";
 import { cacheLife } from "next/cache";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -14,15 +13,16 @@ const PostComponentWithPrisma = async () => {
   cacheLife({ stale: 120, revalidate: 60 });
   const posts = await prisma.post.findMany();
   return (
-    <div className="flex flex-col justify-center items-center gap-4">
+    <div className="space-y-4 w-full max-w-xl">
       {posts.map((post) => (
-        <Card className="mx-auto w-full max-w-sm" key={post.id}>
+        <Card className="mx-auto w-full" key={post.id}>
           <CardHeader>
+            <Badge className="mb-2">
+              {post.published ? "Published" : "Private"}
+            </Badge>
             <CardTitle>{post.title}</CardTitle>
             <CardDescription>{post.content}</CardDescription>
-            <Badge className="mt-2">{post.published}</Badge>
           </CardHeader>
-          <CardContent>Card Content</CardContent>
         </Card>
       ))}
     </div>
