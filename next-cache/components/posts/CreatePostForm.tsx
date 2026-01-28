@@ -13,18 +13,23 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createPostAction, State } from "@/lib/actions/posts";
-import Link from "next/link";
 import { useActionState } from "react";
+import Link from "next/link";
 
 const CreatePostForm = () => {
-  const initialState: State = { message: null };
-  const [state, actionState, pending] = useActionState(
-    createPostAction,
+  //authorId
+  const authorId = 1;
+  const createPostActionWithAuthorId = createPostAction.bind(null, authorId);
+
+  const initialState: State = { errors: {}, message: null };
+  const [state, formAction, pending] = useActionState(
+    createPostActionWithAuthorId,
     initialState,
   );
+
   return (
     <div className="w-full max-w-md">
-      <form action={actionState}>
+      <form action={formAction}>
         <FieldGroup>
           <FieldSet>
             <FieldLegend>Create Post Form</FieldLegend>
@@ -44,6 +49,12 @@ const CreatePostForm = () => {
                 />
               </Field>
 
+              {state?.errors?.title && (
+                <FieldDescription className=" text-xs text-red-500">
+                  {state.errors.title}
+                </FieldDescription>
+              )}
+
               <Field>
                 <FieldLabel htmlFor="checkout-7j9-optional-comments">
                   Post Content
@@ -55,6 +66,12 @@ const CreatePostForm = () => {
                   className="resize-none"
                 />
               </Field>
+
+              {state?.errors?.content && (
+                <FieldDescription className=" text-xs text-red-500">
+                  {state.errors.content}
+                </FieldDescription>
+              )}
 
               <Field orientation="horizontal">
                 <Checkbox
@@ -69,10 +86,16 @@ const CreatePostForm = () => {
                   This post will be published
                 </FieldLabel>
               </Field>
+
+              <FieldDescription className=" text-xs text-red-500">
+                {state.message && state.message}
+              </FieldDescription>
             </FieldGroup>
           </FieldSet>
           <Field orientation="horizontal">
-            <Button type="submit">Submit</Button>
+            <Button type="submit" disabled={pending}>
+              {pending ? "Submitting" : "Submit"}
+            </Button>
             <Link href="/posts">
               <Button type="button" variant="outline">
                 Cancel

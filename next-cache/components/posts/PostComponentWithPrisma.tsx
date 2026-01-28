@@ -10,7 +10,7 @@ import { Badge } from "../ui/badge";
 
 const PostComponentWithPrisma = async () => {
   "use cache";
-  cacheLife({ stale: 120, revalidate: 60 });
+  cacheLife("hours");
   const posts = await prisma.post.findMany();
   return (
     <div className="space-y-4 w-full max-w-xl">

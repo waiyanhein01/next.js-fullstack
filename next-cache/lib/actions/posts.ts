@@ -1,14 +1,56 @@
 "use server";
+import { z } from "zod"
+import prisma from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
 export interface State {
+    errors?: {
+        title?: string[]
+        content?: string[]
+        published?: string[]
+    }
     message?: string | null;
 }
 
-export const createPostAction = async (prevState: State, data: FormData) => {
-    const title = data.get("title") as string;
-    const content = data.get("content") as string;
-    const published = data.get("published") === "on";
+const FormSchema = z.object({
+    title: z.string().trim().min(5, "Title must be at least 5 characters"),
+    content: z.string().trim().min(10, "Content must be at least 10 characters"),
+    published: z.string().nullable().transform((value) => value === "on"),
+})
 
-    console.log(title, content, published);
-    return { message: 'Message from server action!' };
+export const createPostAction = async (authorId: number, prevState: State, data: FormData) => {
+
+    const ValidatedFields = FormSchema.safeParse(
+        {
+            title: data.get("title"),
+            content: data.get("content"),
+            published: data.get("published"),
+
+        },
+    )
+
+    if (!ValidatedFields.success) {
+        const fatten = z.flattenError(ValidatedFields.error)
+        return { errors: fatten.fieldErrors, message: 'Failed to create a new post!' };
+    }
+
+    const { title, content, published } = ValidatedFields.data;
+
+    try {
+        await prisma.post.create({
+            data: {
+                title,
+                content,
+                published,
+                authorId,
+            }
+        })
+    } catch (error) {
+        return {
+            message: "Failed to create a new post!",
+        }
+    }
+
+    redirect("/posts")
+
 }
