@@ -1,4 +1,4 @@
-import { cacheLife, cacheTag } from "next/cache";
+import { cacheLife } from "next/cache";
 
 interface Post {
   author: string;
@@ -11,8 +11,7 @@ interface Post {
 
 const PostComponentWithFetch = async () => {
   "use cache";
-  // cacheLife("hours");
-  cacheTag("posts");
+  cacheLife("hours");
 
   const res = await fetch("https://api.vercel.app/blog");
   const posts = await res.json();

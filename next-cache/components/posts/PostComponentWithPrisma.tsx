@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { cacheLife } from "next/cache";
+import { cacheLife, cacheTag } from "next/cache";
 import {
   Card,
   CardDescription,
@@ -10,7 +10,9 @@ import { Badge } from "../ui/badge";
 
 const PostComponentWithPrisma = async () => {
   "use cache";
-  cacheLife("hours");
+  // cacheLife("hours");
+  cacheTag("posts");
+
   const posts = await prisma.post.findMany();
   return (
     <div className="space-y-4 w-full max-w-xl">
