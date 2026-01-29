@@ -2,6 +2,7 @@
 import { z } from "zod"
 import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import { revalidatePath, updateTag, revalidateTag } from "next/cache";
 
 export interface State {
     errors?: {
@@ -19,7 +20,6 @@ const FormSchema = z.object({
 })
 
 export const createPostAction = async (authorId: number, prevState: State, data: FormData) => {
-
     const ValidatedFields = FormSchema.safeParse(
         {
             title: data.get("title"),
@@ -51,6 +51,17 @@ export const createPostAction = async (authorId: number, prevState: State, data:
         }
     }
 
-    redirect("/posts")
+    // revalidatePath("/posts")
 
+    // revalidateTag("posts", "max")
+    updateTag("posts")
+
+    redirect("/posts")
 }
+
+// revalidatePath - revalidate a specific page or layout
+
+// revalidateTag - revalidate data in server action or route handler
+// updateTag - revalidate data in server action only
+
+// if u want to use revalidateTag and updateTag, you need to use with cacheTags()
