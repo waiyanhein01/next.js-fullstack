@@ -53,8 +53,8 @@ export const createPostAction = async (authorId: number, prevState: State, data:
 
     // revalidatePath("/posts")
 
-    revalidateTag("posts", "max")
-    // updateTag("posts")
+    // revalidateTag("posts", "max")
+    updateTag("posts")
 
     redirect("/posts")
 }

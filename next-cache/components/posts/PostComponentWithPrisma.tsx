@@ -1,5 +1,5 @@
-import prisma from "@/lib/prisma";
-import { cacheLife, cacheTag } from "next/cache";
+// import prisma from "@/lib/prisma";
+// import { cacheLife, cacheTag } from "next/cache";
 import {
   Card,
   CardDescription,
@@ -7,13 +7,17 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
+import { getPosts } from "@/app/utils/getPosts";
 
 const PostComponentWithPrisma = async () => {
-  "use cache";
+  // "use cache";
   // cacheLife("hours");
-  cacheTag("posts");
+  // cacheTag("posts");
 
-  const posts = await prisma.post.findMany();
+  // const posts = await prisma.post.findMany();
+
+  const posts = await getPosts();
+
   return (
     <div className="space-y-4 w-full max-w-xl">
       {posts.map((post) => (
