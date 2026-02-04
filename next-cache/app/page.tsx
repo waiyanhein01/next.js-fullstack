@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 import UserLists from "@/components/users/UserLists";
 import Link from "next/link";
-import { getPosts } from "./utils/getPosts";
+import { getAllPosts } from "./utils/getPosts";
 
 export default async function Home() {
-  const posts = await getPosts();
+  const posts = await getAllPosts();
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       {/* <h1 className=" text-2xl mb-4">All Posts</h1>

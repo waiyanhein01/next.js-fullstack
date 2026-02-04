@@ -7,7 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "../ui/badge";
-import { getPosts } from "@/app/utils/getPosts";
+import Link from "next/link";
+import { getAllPosts } from "@/app/utils/getPosts";
 
 const PostComponentWithPrisma = async () => {
   // "use cache";
@@ -16,7 +17,7 @@ const PostComponentWithPrisma = async () => {
 
   // const posts = await prisma.post.findMany();
 
-  const posts = await getPosts();
+  const posts = await getAllPosts();
 
   return (
     <div className="space-y-4 w-full max-w-xl">
@@ -26,7 +27,9 @@ const PostComponentWithPrisma = async () => {
             <Badge className="mb-2">
               {post.published ? "Published" : "Private"}
             </Badge>
-            <CardTitle>{post.title}</CardTitle>
+            <Link href={`/posts/${post.id}`}>
+              <CardTitle>{post.title}</CardTitle>
+            </Link>
             <CardDescription>{post.content}</CardDescription>
           </CardHeader>
         </Card>

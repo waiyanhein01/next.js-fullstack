@@ -25,7 +25,6 @@ export const createPostAction = async (authorId: number, prevState: State, data:
             title: data.get("title"),
             content: data.get("content"),
             published: data.get("published"),
-
         },
     )
 
@@ -65,3 +64,4 @@ export const createPostAction = async (authorId: number, prevState: State, data:
 // updateTag - revalidate data in server action only
 
 // if u want to use revalidateTag and updateTag, you need to use with cacheTags()
+
