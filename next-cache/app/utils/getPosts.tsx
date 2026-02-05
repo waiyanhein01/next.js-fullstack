@@ -10,6 +10,7 @@ export const getAllPosts = async () => {
 };
 
 export const getPost = async (id: number) => {
+  cacheTag("posts", `post-${id}`);
   try {
     const post = await prisma.post.findUnique({ where: { id } });
     if (!post) {

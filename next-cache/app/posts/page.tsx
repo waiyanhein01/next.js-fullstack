@@ -1,6 +1,11 @@
 import Linker from "@/components/posts/Linker";
 import PostComponentWithPrisma from "@/components/posts/PostComponentWithPrisma";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Posts",
+};
 
 const Page = () => {
   return (
