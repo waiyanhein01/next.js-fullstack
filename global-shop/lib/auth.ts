@@ -1,8 +1,11 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "@/lib/prisma";
+import { nextCookies } from "better-auth/next-js";
 
 export const auth = betterAuth({
+    baseUrl: process.env.BETTER_AUTH_URL,
+    // trustedOrigins: ["http://localhost:5153"], // replace with your frontend URL
     database: prismaAdapter(prisma, {
         provider: "postgresql",
     }),
@@ -13,6 +16,21 @@ export const auth = betterAuth({
         google: {
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            prompt: "select_account", // optional, forces account selection even if user has previously authorized the app
         },
     },
+    user: {
+        additionalFields: {
+            role: {
+                type: "string",
+                input: false
+            }
+        }
+    },
+    plugins: [
+        nextCookies() // make sure this is the last plugin in the array
+    ]
 });
+
+export type Session = typeof auth.$Infer.Session
+export type User = typeof auth.$Infer.Session.user
